@@ -11,3 +11,25 @@ footer{padding:90px var(--pad);border-top:1px solid var(--line);display:flex;jus
 .hero-small{padding:100px 0}.hero-small h1{font:600 clamp(80px,15vw,200px)/.85 Manrope;letter-spacing:-.08em;margin:0}
 .case-hero{padding:100px 0 70px}.case-hero h1{font:600 clamp(80px,15vw,210px)/.85 Manrope;letter-spacing:-.08em;margin:0 0 45px}.case-hero p{max-width:800px;font-size:clamp(20px,2.4vw,34px);line-height:1.25}.case-image{min-height:65vh;background:#dedbd3;display:grid;place-items:center;font:600 40px Manrope;color:#aaa69e}.case-image.tall{min-height:80vh;margin-top:60px}.overview{padding:90px 0;display:grid;grid-template-columns:1fr 1fr;gap:60px}.facts{display:grid;grid-template-columns:1fr 1fr;gap:35px}.facts p{line-height:1.5;margin:0;color:var(--muted)}.facts b{color:var(--fg)}.case-copy{max-width:800px;font-size:25px;line-height:1.4;padding-bottom:40px}.back{padding:70px 0;font-size:15px}
 @media(max-width:700px){.site-header{height:76px}.site-header nav{gap:14px}.hero{min-height:80vh}.hero h1{font-size:22vw}.work-grid{grid-template-columns:1fr}.work-card.large{grid-column:auto}.work-card,.image-placeholder{min-height:300px}.skills,.overview{grid-template-columns:1fr}.project-row{grid-template-columns:1fr;gap:10px}.project-row b{text-align:left}.socials{flex-direction:column;align-items:flex-start}.case-hero h1{font-size:22vw}.facts{grid-template-columns:1fr}.case-image{min-height:45vh}footer{display:block}.socials{margin-top:40px}}
+/* Fix: ensure image area grows and pushes the meta/caption down */
+.work-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-placeholder {
+  /* let the image area grow/shrink while remaining at least the normal card height */
+  flex: 1 1 auto;
+  height: auto;               /* remove any forced 100% height that causes overlap */
+  min-height: 420px;
+  background-size: cover;     /* ensure images fill their area nicely */
+  background-position: center;
+}
+
+/* Make sure the card meta/caption doesn't flex and sits below the image */
+.work-card .meta,
+.work-card .card-meta,
+.work-card .work-meta {
+  flex: 0 0 auto;
+  padding-top: 12px;
+}
